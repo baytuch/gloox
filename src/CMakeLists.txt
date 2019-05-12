@@ -284,7 +284,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 if (WIN32)
   list(APPEND GLOOX_INCLUDE "../config.h.win")
-  add_definitions(-DWIN32 -D_WIN32 -D DLL_EXPORT -D HAVE_WINTLS)
+  add_definitions(-DWIN32 -D_WIN32 -D DLL_EXPORT)
   set(GLOOX_RES "version.rc")
 else()
   list(APPEND GLOOX_INCLUDE "../config.h.unix.in")
@@ -293,4 +293,5 @@ endif()
 include_directories(${GLOOX_INCLUDE})
 
 add_library (gloox SHARED ${GLOOX_SRC} ${GLOOX_RES})
+target_link_libraries(gloox ${SSL_LIBRARY} ${CRYPTO_LIBRARY})
 

@@ -21,6 +21,10 @@
 #include <ctime>
 #include <cstdlib>
 
+#ifdef X509_NAME
+  #undef X509_NAME
+#endif
+
 #include <openssl/err.h>
 #include <openssl/x509v3.h>
 
